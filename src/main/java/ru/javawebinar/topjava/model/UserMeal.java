@@ -1,12 +1,13 @@
 package ru.javawebinar.topjava.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * GKislin
  * 11.01.2015.
  */
-public class UserMeal {
+public class UserMeal implements Serializable{
     private final LocalDateTime dateTime;
 
     private final String description;
