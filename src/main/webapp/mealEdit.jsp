@@ -28,7 +28,7 @@
     <h2><a href="index.html">Home</a></h2>
     <h3>${param.action == 'create' ? 'Create meal' : 'Edit meal'}</h3>
     <hr>
-    <jsp:useBean id="meal" type="ru.javawebinar.topjava.model.Meal" scope="request"/>
+    <jsp:useBean id="meal" type="ru.javawebinar.topjava.to.Meal" scope="request"/>
     <form method="post" action="meals">
         <input type="hidden" name="id" value="${meal.id}">
         <dl>

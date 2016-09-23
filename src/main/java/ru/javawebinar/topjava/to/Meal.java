@@ -1,13 +1,17 @@
-package ru.javawebinar.topjava.model;
+package ru.javawebinar.topjava.to;
 
+import ru.javawebinar.topjava.model.BaseEntity;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  * GKislin
  * 11.01.2015.
  */
-public class MealWithExceed {
-    private final Integer id;
+public class Meal extends BaseEntity {
+    private Integer id;
 
     private final LocalDateTime dateTime;
 
@@ -15,18 +19,23 @@ public class MealWithExceed {
 
     private final int calories;
 
-    private final boolean exceed;
+    public Meal(LocalDateTime dateTime, String description, int calories) {
+        this(null, dateTime, description, calories);
+    }
 
-    public MealWithExceed(Integer id, LocalDateTime dateTime, String description, int calories, boolean exceed) {
-        this.id = id;
+    public Meal(Integer id, LocalDateTime dateTime, String description, int calories) {
+        super(id);
         this.dateTime = dateTime;
         this.description = description;
         this.calories = calories;
-        this.exceed = exceed;
     }
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public LocalDateTime getDateTime() {
@@ -41,18 +50,25 @@ public class MealWithExceed {
         return calories;
     }
 
-    public boolean isExceed() {
-        return exceed;
+    public LocalDate getDate() {
+        return dateTime.toLocalDate();
+    }
+
+    public LocalTime getTime() {
+        return dateTime.toLocalTime();
+    }
+
+    public boolean isNew() {
+        return id == null;
     }
 
     @Override
     public String toString() {
-        return "MealWithExceed{" +
+        return "Meal{" +
                 "id=" + id +
                 ", dateTime=" + dateTime +
                 ", description='" + description + '\'' +
                 ", calories=" + calories +
-                ", exceed=" + exceed +
                 '}';
     }
 }
